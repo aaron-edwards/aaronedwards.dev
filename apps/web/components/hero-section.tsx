@@ -7,12 +7,13 @@ function HeroSection() {
       <h1 className="mb-1.5 text-2xl font-bold tracking-tight text-foreground">
         Aaron Edwards
       </h1>
-      <p className="mb-4 font-mono text-xs uppercase tracking-widest text-teal-400">
+      <p className="mb-4 font-mono text-xs uppercase tracking-widest text-emerald-400">
         Full-Stack Engineer
       </p>
       <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-        Building tools and products I believe in. Currently focused on
-        AI-augmented developer workflows.
+        Senior full-stack engineer with 12+ years. Most recently at Block (Cash
+        App), building the chat, voice, and LLM support systems now handling
+        millions of interactions monthly.
       </p>
     </div>
   )

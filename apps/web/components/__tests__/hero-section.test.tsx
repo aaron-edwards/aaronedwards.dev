@@ -16,6 +16,6 @@ describe("HeroSection", () => {
 
   it("renders the bio", () => {
     render(<HeroSection />)
-    expect(screen.getByText(/Building tools and products/)).toBeInTheDocument()
+    expect(screen.getByText(/Senior full-stack engineer/)).toBeInTheDocument()
   })
 })

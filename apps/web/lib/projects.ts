@@ -4,6 +4,7 @@ type Project = {
   description: string
   tech: string[]
   href: string
+  icon?: string
 }
 
 const projects: Project[] = [
@@ -14,6 +15,7 @@ const projects: Project[] = [
       "Interactive resume chatbot — ask questions about my background and experience, powered by Google Gemini.",
     tech: ["React", "Fastify", "Gemini"],
     href: "https://aaron-edwards-resumebot.web.app/",
+    icon: "/logos/resume-bot.svg",
   },
 ]
 

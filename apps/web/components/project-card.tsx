@@ -12,10 +12,14 @@ function ProjectCard({ project }: ProjectCardProps) {
       href={project.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group block rounded-lg border border-border bg-card p-5 transition-colors hover:border-teal-900/50"
+      className="group block rounded-lg border border-border bg-card p-5 transition-colors hover:border-emerald-900/50"
     >
-      <div className="mb-3.5 flex h-8 w-8 items-center justify-center rounded-md border border-teal-900 bg-teal-950">
-        <span className="font-mono text-xs text-teal-400">{initials}</span>
+      <div className="mb-3.5 flex h-8 w-8 items-center justify-center rounded-md border border-emerald-900 bg-emerald-950">
+        {project.icon ? (
+          <img src={project.icon} alt="" className="h-5 w-5" />
+        ) : (
+          <span className="font-mono text-xs text-emerald-400">{initials}</span>
+        )}
       </div>
       <p className="mb-1.5 text-sm font-semibold text-foreground">
         {project.name}
