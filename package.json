@@ -12,6 +12,9 @@
     "check": "biome check --write .",
     "typecheck": "turbo typecheck"
   },
+  "dependencies": {
+    "next": "16.1.6"
+  },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@testing-library/jest-dom": "^6.6.3",

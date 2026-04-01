@@ -48,19 +48,40 @@ jobs:
           name: Test
           command: pnpm test
 
-  deploy:
+  deploy-production:
     docker:
       - image: cimg/node:20.19
     steps:
       - checkout
-      # TODO: add deploy steps
+      - run:
+          name: Enable corepack
+          command: sudo corepack enable
+      - restore_cache:
+          keys:
+            - pnpm-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install dependencies
+          command: pnpm install --frozen-lockfile
+      - save_cache:
+          key: pnpm-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - ~/.local/share/pnpm/store
+      - run:
+          name: Pull Vercel project settings
+          command: npx vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+      - run:
+          name: Build
+          command: npx vercel build --prod --token=$VERCEL_TOKEN
+      - run:
+          name: Deploy to Vercel production
+          command: npx vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
 
 workflows:
   ci:
     jobs:
       - checks
       - test
-      - deploy:
+      - deploy-production:
           requires:
             - checks
             - test
