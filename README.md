@@ -1,21 +1,57 @@
-# shadcn/ui monorepo template
+# aaronedwards.dev
 
-This is a Next.js monorepo template with shadcn/ui.
+Personal website — built with Next.js, Turborepo, and shadcn/ui.
 
-## Adding components
+## Stack
 
-To add components to your app, run the following command at the root of your `web` app:
+- **Framework**: Next.js 16 (App Router, Turbopack)
+- **Monorepo**: Turborepo + pnpm workspaces
+- **UI**: shadcn/ui components in a shared `packages/ui` library
+- **Styling**: Tailwind CSS v4
+- **Linting/Formatting**: Biome
+- **Testing**: Vitest + React Testing Library
+- **Git hooks**: Lefthook
+
+## Getting Started
 
 ```bash
-pnpm dlx shadcn@latest add button -c apps/web
+pnpm install
+pnpm dev
 ```
 
-This will place the ui components in the `packages/ui/src/components` directory.
+The site runs at [http://localhost:3000](http://localhost:3000).
 
-## Using components
+## Commands
 
-To use the components in your app, import them from the `ui` package.
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server |
+| `pnpm build` | Production build |
+| `pnpm test` | Run tests |
+| `pnpm lint` | Lint with Biome |
+| `pnpm format` | Format with Biome |
+| `pnpm typecheck` | TypeScript check |
+
+## Adding UI Components
+
+```bash
+pnpm dlx shadcn@latest add <component> -c apps/web
+```
+
+Components are added to `packages/ui/src/components/` and imported via:
 
 ```tsx
-import { Button } from "@workspace/ui/components/button";
+import { Button } from "@workspace/ui/components/button"
 ```
+
+## Project Structure
+
+```
+apps/web          # Next.js app
+packages/ui       # Shared component library
+packages/typescript-config  # Shared TS config
+```
+
+## License
+
+MIT
