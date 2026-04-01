@@ -67,6 +67,9 @@ jobs:
           paths:
             - ~/.local/share/pnpm/store
       - run:
+          name: Pull Vercel project settings
+          command: npx vercel pull --yes --environment=preview --cwd apps/web --token=$VERCEL_TOKEN
+      - run:
           name: Build
           command: npx vercel build --cwd apps/web --token=$VERCEL_TOKEN
       - run:
@@ -91,6 +94,9 @@ jobs:
           key: pnpm-{{ checksum "pnpm-lock.yaml" }}
           paths:
             - ~/.local/share/pnpm/store
+      - run:
+          name: Pull Vercel project settings
+          command: npx vercel pull --yes --environment=production --cwd apps/web --token=$VERCEL_TOKEN
       - run:
           name: Build
           command: npx vercel build --cwd apps/web --prod --token=$VERCEL_TOKEN
