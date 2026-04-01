@@ -53,7 +53,9 @@ jobs:
       - image: cimg/node:20.19
     steps:
       - checkout
-      # TODO: add deploy steps
+      - run:
+          name: Deploy to Vercel
+          command: npx vercel deploy --prod --token=$VERCEL_TOKEN
 
 workflows:
   ci:
