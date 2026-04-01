@@ -1,0 +1,69 @@
+version: 2.1
+
+jobs:
+  checks:
+    docker:
+      - image: cimg/node:20.19
+    steps:
+      - checkout
+      - run:
+          name: Enable corepack
+          command: sudo corepack enable
+      - restore_cache:
+          keys:
+            - pnpm-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install dependencies
+          command: pnpm install --frozen-lockfile
+      - save_cache:
+          key: pnpm-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - ~/.local/share/pnpm/store
+      - run:
+          name: Lint
+          command: pnpm lint
+      - run:
+          name: Typecheck
+          command: pnpm typecheck
+
+  test:
+    docker:
+      - image: cimg/node:20.19
+    steps:
+      - checkout
+      - run:
+          name: Enable corepack
+          command: sudo corepack enable
+      - restore_cache:
+          keys:
+            - pnpm-{{ checksum "pnpm-lock.yaml" }}
+      - run:
+          name: Install dependencies
+          command: pnpm install --frozen-lockfile
+      - save_cache:
+          key: pnpm-{{ checksum "pnpm-lock.yaml" }}
+          paths:
+            - ~/.local/share/pnpm/store
+      - run:
+          name: Test
+          command: pnpm test
+
+  deploy:
+    docker:
+      - image: cimg/node:20.19
+    steps:
+      - checkout
+      # TODO: add deploy steps
+
+workflows:
+  ci:
+    jobs:
+      - checks
+      - test
+      - deploy:
+          requires:
+            - checks
+            - test
+          filters:
+            branches:
+              only: main
