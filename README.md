@@ -1,4 +1,5 @@
 # aaronedwards.dev
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/aaron-edwards/aaronedwards.dev/tree/main.svg?style=shield)](https://dl.circleci.com/status-badge/redirect/gh/aaron-edwards/aaronedwards.dev/tree/main)
 
 Personal website — built with Next.js, Turborepo, and shadcn/ui.
 
@@ -23,14 +24,14 @@ The site runs at [http://localhost:3000](http://localhost:3000).
 
 ## Commands
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start development server |
-| `pnpm build` | Production build |
-| `pnpm test` | Run tests |
-| `pnpm lint` | Lint with Biome |
-| `pnpm format` | Format with Biome |
-| `pnpm typecheck` | TypeScript check |
+| Command          | Description              |
+| ---------------- | ------------------------ |
+| `pnpm dev`       | Start development server |
+| `pnpm build`     | Production build         |
+| `pnpm test`      | Run tests                |
+| `pnpm lint`      | Lint with Biome          |
+| `pnpm format`    | Format with Biome        |
+| `pnpm typecheck` | TypeScript check         |
 
 ## Adding UI Components
 
