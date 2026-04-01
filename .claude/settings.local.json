@@ -1,5 +1,9 @@
 {
   "permissions": {
-    "allow": ["Bash(pnpm format:*)", "Bash(pnpm test:*)"]
+    "allow": [
+      "Bash(pnpm format:*)",
+      "Bash(pnpm test:*)",
+      "Bash(pnpm typecheck:*)"
+    ]
   }
 }
