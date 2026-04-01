@@ -1,6 +1,7 @@
 {
   "extends": "@workspace/typescript-config/nextjs.json",
   "compilerOptions": {
+    "types": ["node", "vitest/globals", "@testing-library/jest-dom"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],

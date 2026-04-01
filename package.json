@@ -5,6 +5,8 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "test": "turbo test",
+    "test:watch": "turbo test:watch",
     "lint": "turbo lint",
     "format": "biome format --write .",
     "check": "biome check --write .",
@@ -12,10 +14,15 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@vitejs/plugin-react": "^4.3.4",
     "@workspace/typescript-config": "workspace:*",
+    "jsdom": "^26.1.0",
     "lefthook": "^1.11.13",
     "turbo": "^2.8.17",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "^2.1.9"
   },
   "packageManager": "pnpm@9.15.9",
   "engines": {
