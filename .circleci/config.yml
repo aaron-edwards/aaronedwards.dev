@@ -48,13 +48,22 @@ jobs:
           name: Test
           command: pnpm test
 
-  deploy:
+  deploy-preview:
     docker:
       - image: cimg/node:20.19
     steps:
       - checkout
       - run:
-          name: Deploy to Vercel
+          name: Deploy preview to Vercel
+          command: npx vercel deploy --token=$VERCEL_TOKEN
+
+  deploy-production:
+    docker:
+      - image: cimg/node:20.19
+    steps:
+      - checkout
+      - run:
+          name: Deploy to Vercel production
           command: npx vercel deploy --prod --token=$VERCEL_TOKEN
 
 workflows:
@@ -62,7 +71,14 @@ workflows:
     jobs:
       - checks
       - test
-      - deploy:
+      - deploy-preview:
+          requires:
+            - checks
+            - test
+          filters:
+            branches:
+              ignore: main
+      - deploy-production:
           requires:
             - checks
             - test
