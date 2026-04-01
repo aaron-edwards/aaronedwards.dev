@@ -1,6 +1,6 @@
-import type { Project } from "@/lib/projects"
 import { render, screen } from "@testing-library/react"
-import { ProjectCard } from "../project-card"
+import { ProjectCard } from "../components/project-card"
+import type { Project } from "../lib/projects"
 
 const project: Project = {
   slug: "test-project",
