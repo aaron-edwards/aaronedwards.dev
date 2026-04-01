@@ -1,6 +1,6 @@
+import type { Project } from "@/lib/projects"
 import { render, screen } from "@testing-library/react"
-import { ProjectGrid } from "../components/project-grid"
-import type { Project } from "../lib/projects"
+import { ProjectGrid } from "../project-grid"
 
 const oneProject: Project[] = [
   {

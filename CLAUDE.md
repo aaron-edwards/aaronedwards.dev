@@ -21,8 +21,10 @@ pnpm typecheck    # TypeScript type-check via turbo
 apps/
   web/              # Next.js 16 app (the website)
     app/            # App router pages and layouts
+      __tests__/    # Tests for pages/layouts
     components/     # App-specific components
-    __tests__/      # Vitest tests (RTL, scoped to this dir)
+      __tests__/    # Tests colocated with components
+    __tests__/      # setup.ts only (vitest setup file)
 packages/
   ui/               # Shared React component library (shadcn/ui base)
   typescript-config/ # Shared tsconfig files
@@ -33,7 +35,7 @@ packages/
 - **Formatter/Linter**: Biome (not ESLint/Prettier) — config at `biome.json`
 - **Package manager**: pnpm with workspaces; use `pnpm` not `npm`
 - **Imports**: Internal packages via `@workspace/ui/*`, path alias `@/*` maps to `apps/web/`
-- **Tests**: Drop files as `__tests__/*.test.{ts,tsx}` — vitest picks them up automatically
+- **Tests**: Colocate tests next to what they test in a `__tests__/` subdirectory (e.g. `components/__tests__/foo.test.tsx` for `components/foo.tsx`, `app/__tests__/page.test.tsx` for `app/page.tsx`)
 - **Git hooks**: Lefthook runs `biome check --write` on staged files pre-commit
 
 ## Adding UI Components
@@ -51,7 +53,7 @@ import { Button } from "@workspace/ui/components/button"
 
 ## Testing
 
-Tests live in `apps/web/__tests__/`. Uses Vitest + React Testing Library with globals enabled (`describe`, `it`, `expect` available without imports).
+Tests are colocated with source files in `__tests__/` subdirectories (e.g. `components/__tests__/`, `app/__tests__/`). Uses Vitest + React Testing Library with globals enabled (`describe`, `it`, `expect` available without imports). `apps/web/__tests__/setup.ts` is the shared Vitest setup file.
 
 ```bash
 pnpm test          # One-shot run (turbo-cached)
